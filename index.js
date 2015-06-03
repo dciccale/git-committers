@@ -6,20 +6,26 @@
 
 var exec = require('child_process').exec;
 var os = require('os');
+var _ = require('lodash');
 
 var format = require('./format');
 var sort = require('./sort');
 
-module.exports = function (options, callback) {
+module.exports = function (opts, callback) {
   var defaults = {
-    sort: 'chronological', // Alphabetical, commits
+    sort: 'chronological', // alphabetical, commits
     email: false, // Show emails in the output
     nomerges: false, // Only works when sorting by commits
   };
 
   var cmd = 'git';
 
-  options = _.extend({}, defaults, options);
+  if (typeof opts === 'function') {
+    callback = opts;
+    opts = {};
+  }
+
+  var options = _.extend({}, defaults, opts);
 
   if (options.sort === 'chronological' || options.sort === 'alphabetical') {
     cmd += ' log --pretty="%aN';
@@ -54,14 +60,14 @@ module.exports = function (options, callback) {
   }
 
   exec(cmd, function (err, stdout, stderr) {
+    callback = typeof callback === 'function' ? callback : console.log;
     if (err) {
-      throw err;
+      callback(err, stdout);
     } else {
       stdout = format(stdout);
-      stdout = sort(stdout);
+      stdout = sort(options.sort, stdout);
       stdout = stdout.join(os.EOL);
-      callback = typeof callback === 'function' ? callback : console.log;
-      callback(stdout);
+      callback(null, stdout);
     }
   });
 };

@@ -12,9 +12,9 @@ var SORT_METHODS = {
   chronological: 'reverse'
 };
 
-moule.exports = function (stdout) {
-  if (SORT_METHODS[options.sort]) {
-    stdout = _.unique(stdout[SORT_METHODS[options.sort]]());
+module.exports = function (sort, stdout) {
+  if (SORT_METHODS[sort]) {
+    stdout = _.unique(stdout[SORT_METHODS[sort]]());
   }
   return stdout;
 };
