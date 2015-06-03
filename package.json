@@ -1,0 +1,25 @@
+{
+  "name": "git-committers",
+  "version": "1.0.0",
+  "description": "Get the committers from a git repository with some sorting and formatting options",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:dciccale/git-committers.git"
+  },
+  "keywords": [
+    "git",
+    "committers",
+    "authors",
+    "contributors"
+  ],
+  "author": "Denis Ciccale (@tdecs)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dciccale/git-committers/issues"
+  },
+  "homepage": "https://github.com/dciccale/git-committers"
+}
