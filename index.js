@@ -59,7 +59,7 @@ module.exports = function (opts, callback) {
     }
   }
 
-  exec(cmd, function (err, stdout, stderr) {
+  return exec(cmd, function (err, stdout, stderr) {
     callback = typeof callback === 'function' ? callback : console.log;
     if (err) {
       callback(err, stdout);
