@@ -3,6 +3,7 @@
 > Get a committer list from a git repository with some sorting and formatting options.
 
 **Looking for a grunt task? [grunt-git-committers](https://github.com/dciccale/grunt-git-committers)**
+**Looking for a gulp task? [gulp-git-committers](https://github.com/dciccale/gulp-git-committers)**
 
 ```sh
 $ npm install git-committers
